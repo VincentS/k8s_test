@@ -1,2 +1,3 @@
-# k8s_test
-K8s 
+# K8S Test Script
+
+Script builds and destroys an NGINX cluster.
