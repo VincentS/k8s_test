@@ -32,7 +32,7 @@ function checkIfAvailable {
     n=0
     while true; do
         if [[ $n -lt $RETRIES ]]; then
-            avail_pods=$(kubectl get deployment nginx-deployment -o jsonpath='{.status.availableReplicas}')
+            avail_pods=$(kubectl get deployment nginx-deployment -o jsonpath={.status.availableReplicas})
             if [[ $avail_pods -eq $1 ]]; then
                 break
             fi
@@ -60,7 +60,7 @@ echo "Waiting $WAITSEC seconds before progressing further"
 sleep $WAITSEC
 
 #Create Deployment of Appication
-req_pods=$(kubectl get deployment  nginx-deployment -o jsonpath='{.status.replicas}')
+req_pods=$(kubectl get deployment  nginx-deployment -o jsonpath={.status.replicas})
 
 checkIfAvailable $req_pods
 
